@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Copatible" content="IE=edge, chrome=1, opera">
+        <link rel="stylesheet" href="style.css" type="text/css">
+        <link rel="stylesheet" href="css/fontello.css" type="text/css">
+        <title>E-sports</title>
+
+        <meta name="description" content="Wszystko z serii zabawkowej, filmowej oraz gier LEGO">
+        <meta name="keywords" content="gry, komputerowe, lego, konsole, nowe gry">
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="header">
+                <div class="logo">
+                    
+                    <span style="color: #ccac01;">E-</span>sports
+                    <div style="clear: both;"></div><br />
+                    
+                   
+                    
+                    
+                    
+                </div>
+                <div class="nav">
+                    <ol>
+                        <li> <button style="float: none; margin-bottom: 10px; width: 120px; height: 40px;" id="play">Play</button></li>
+                        <li><button style="float: none; margin-bottom: 10px; width: 120px; height: 40px;" id="next">Next</button></li>
+                        <li><button style="float: none; margin-bottom: 0px; width: 120px; height: 40px;" id="stop">Stop</button></li>
+                        <li><a href="index.html">Strona główna</a></li>
+                        <li><a href="lol.html">LOL</a>
+                            <ul>
+                                <li><a href="lolo.html">Osiągniecia</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="cs.html">Counter Strike</a>
+                            <ul>
+                                <li><a href="cso.html">Osiągniecia</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="dota.html">DOTA 2</a>
+                            <ul>
+                                <li><a href="dotao.html">Osiągniecia</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="wot.html">World of Tanks</a>
+                            <ul>
+                                <li><a href="woto.html">Osiągniecia</a></li>
+                            </ul>
+                        </li>
+
+                        <li><a href="kontakt.html">Kontakt</a></li>
+                    </ol>
+
+                </div>
+            </div>
+                <div class="content">
+                    <b><p>Tutaj znajdziesz wszystkie rozgrywki popularnych w ostanich latach rozgrywek komputerowych  </p></b>
+                    <b><p>(e-sportowych).</p></b><br />
+                    <p>Poznasz tutaj kilka naprawde dobych tytulow gier komputerowych </p><br />
+                    <p>miedzy innymi sa tutaj takie tytuly jak : </p><br />
+                    <ul>
+                        <li>
+                            Counter Strike,
+                        </li>
+                        <li>
+                            League of Legends,
+                        </li>
+                        <li>
+                            Dota 2,
+                        </li>
+                        <li>
+                            World of Tanks.
+                        </li>
+                    </ul>
+                    
+                </div>
+                
+                <div class="socials">
+                    <div class="socialdivs">
+                        <div class="fb">
+                            <a class="tilelink" href="www.facebook.com"><i class="icon-facebook-official"></i></a>
+                        </div>
+                        <div class="yt">
+                            <a class="tilelink" href="https://www.youtube.com"><i class="icon-youtube"></i></a>
+                        </div>
+                        <div class="twitter">
+                            <a class="tilelink" href="https://twitter.com/?lang=pl"><i class="icon-twitter-squared"></i></a>
+                        </div>
+                        <div class="twitch">
+                            <a class="tilelink" href="https://www.twitch.tv"><i class="icon-twitch"></i></a>
+                        </div>
+                        <div class="steam">
+                            <a class="tilelink" href="www.steam.com"><i class="icon-steam-squared"></i></a>
+                        </div>
+                        <div style="clear: both;"></div>
+                    </div>
+                </div>
+                <div class="footer">Autor: Łukasz Samojedny</div>
+            
+        </div>
+
+        <script src="jquery-3.4.1.min.js"></script>
+        <script>
+
+            $(document).ready(function() {
+            var NavY = $('.nav').offset().top;
+             
+            var stickyNav = function(){
+            var ScrollY = $(window).scrollTop();
+                  
+            if (ScrollY > NavY) { 
+                $('.nav').addClass('sticky');
+            } else {
+                $('.nav').removeClass('sticky'); 
+            }
+            };
+             
+            stickyNav();
+             
+            $(window).scroll(function() {
+                stickyNav();
+            });
+            });
+            
+        </script>
+        <script>
+           
+    
+            const files = ['song2.mp3', 'song.mp3', 'song3.mp3'];
+
+            let currentFile = 0;
+            
+            const audio = new Audio();
+
+            const getNextSong = () => {
+            currentFile++;
+            if(currentFile >= files.length) {
+                currentFile = 0;
+            }
+            return files[currentFile];
+            }
+
+            audio.src=files[currentFile];
+            console.log(audio.src);
+            audio.play();
+            audio.addEventListener('ended',function(){
+            audio.src=getNextSong();
+            console.log(audio.src);
+            audio.play();
+            });
+
+            document.getElementById('play').addEventListener('click', () => {
+            audio.play();
+            })
+
+            document.getElementById('stop').addEventListener('click', () => {
+            audio.pause();
+            })
+
+            document.getElementById('next').addEventListener('click', () => {
+            audio.src=getNextSong();
+            console.log(audio.src);
+            audio.play();
+            })
+    
+        </script>
+
+    </body>
+    
+</html>
